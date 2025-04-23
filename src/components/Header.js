@@ -15,6 +15,7 @@ import {
   FiBriefcase,
   FiMail,
 } from "react-icons/fi";
+import { GrArticle } from "react-icons/gr";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,6 +49,15 @@ export default function Header() {
               >
                 <FiUser className="mr-2" />
                 About
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/blog"
+                className={`flex items-center px-4 py-2 text-neutral-600 hover:text-neutral-900 transition-colors text-sm font-medium rounded-lg hover:bg-neutral-50 ${accentColor}`}
+              >
+                <GrArticle className="mr-2" />
+                Blogs
               </Link>
             </motion.div>
 
@@ -135,7 +145,7 @@ export default function Header() {
             >
               <Link
                 href="/contact"
-                className={`flex items-center px-5 py-2.5 ${primaryGradient} ${primaryGradientHover} text-white rounded-lg text-sm font-medium transition-all hover:shadow-sm group`}
+                className={`flex items-center px-5 py-2.5 ${primaryGradient} ${primaryGradientHover} text-white rounded-full text-sm font-medium transition-all hover:shadow-sm group`}
               >
                 <FiMail className="mr-2 text-white/90" />
                 Contact
@@ -195,6 +205,7 @@ export default function Header() {
                     ],
                   },
                   { href: "/work", icon: <FiBriefcase />, text: "Work" },
+                  { href: "/blog", icon: <GrArticle />, text: "Blogs" },
                 ].map((item, index) => (
                   <motion.div
                     key={index}

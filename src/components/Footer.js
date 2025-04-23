@@ -79,23 +79,32 @@ export default function Footer() {
       </div>
 
       <div className="relative container mx-auto px-5 max-w-7xl">
-        <div className="grid lg:grid-cols-4 gap-12 mb-16">
-          {/* Brand column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link href="/" className="text-2xl font-bold mb-4 inline-block">
+        {/* Top Row - Brand, Social, Contact */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid md:grid-cols-3 gap-8 mb-16 items-start"
+        >
+          {/* Brand Section */}
+          <div className="space-y-4">
+            <Link href="/" className="text-2xl font-bold inline-block">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
                 HustleCode
               </span>
             </Link>
-            <p className="text-neutral-400 mb-6">
+            <p className="text-neutral-400">
               Building the future with modern technologies and innovative
               solutions.
             </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">
+              Connect With Us
+            </h3>
             <div className="flex gap-4">
               {socialLinks.map((social, i) => (
                 <motion.a
@@ -109,49 +118,12 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Link columns */}
-          {links.map((group, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
-              <h3 className="text-lg font-semibold text-white mb-5">
-                {group.title}
-              </h3>
-              <ul className="space-y-3">
-                {group.items.map((item, j) => (
-                  <motion.li
-                    key={j}
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
-                    <Link
-                      href={item.href}
-                      className="text-neutral-400 hover:text-white transition-colors flex items-center gap-2"
-                    >
-                      <span className="w-1 h-1 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                      {item.name}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-
-          {/* Contact column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-semibold text-white mb-5">Contact</h3>
-            <ul className="space-y-4">
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Contact Info</h3>
+            <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <FiMail className="text-cyan-400 mt-1 flex-shrink-0" />
                 <a
@@ -177,8 +149,42 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
+
+        {/* Middle Row - Navigation Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid lg:grid-cols-3 gap-12 mb-16"
+        >
+          {links.map((group, i) => (
+            <div key={i}>
+              <h3 className="text-lg font-semibold text-white mb-5">
+                {group.title}
+              </h3>
+              <ul className="space-y-3">
+                {group.items.map((item, j) => (
+                  <motion.li
+                    key={j}
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className="text-neutral-400 hover:text-white transition-colors flex items-center gap-2"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                      {item.name}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </motion.div>
 
         {/* Bottom bar */}
         <motion.div
